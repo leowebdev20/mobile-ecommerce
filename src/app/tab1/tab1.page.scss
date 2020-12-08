@@ -1,0 +1,25 @@
+ion-badge {
+    position: absolute;
+    margin-right: 50px;
+    right: 0;
+    top: 24px;
+    color: #0093ff;
+}
+
+ion-icon[name="cart"] {
+    color: rgb(207, 97, 97);
+}
+
+ion-buttons[slot="end"] > ion-button.search {
+    margin: 0 8px;
+}
+
+ion-buttons[slot="primary"] {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+
+    ion-button {
+        flex: 1;
+    }
+}
