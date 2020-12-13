@@ -23,3 +23,21 @@ ion-buttons[slot="primary"] {
         flex: 1;
     }
 }
+
+.item-entry {
+    padding: 10px 0;
+}
+
+.item-name {
+    font-size: 20px;
+    font-weight: 700;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--ion-color-dark-tint);
+}
+
+.price {
+    color: var(--ion-color-tertiary-tint);
+    font-weight: 500;
+    font-size: 16px;;
+}

@@ -13,7 +13,9 @@ export const environment = {
   token_verify_url: tokenVerifyUrl1,
   readOnlyKeys: {
     consumer_key: 'ck_994ee484ab3dd8d7a8c95a8c4efc18bc53ac711f',
+    // consumer_key: 'ck_9c06e81243ccee41f598cef470af4bbdb9720f61',
     consumer_secret: 'cs_c62bfd25d0dd8eb375b2ef28918c10684acb3a8e'
+    // consumer_secret: 'cs_6c8c6b994f210cb8a3a1be7ab868090d049252b2'
   },
   writableKeys: {
     consumer_key: 'ck_eaa7d241da7b9ed870a3b495ba12a069a00a78b3',
