@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProductResolverService } from '../services/product-resolver.service';
 import { Tab1Page } from './tab1.page';
 
 const routes: Routes = [
@@ -9,7 +10,8 @@ const routes: Routes = [
   },
   {
     path: 'prod-detail/:id',
-    loadChildren: () => import('./prod-detail/prod-detail.module').then( m => m.ProdDetailPageModule)
+    loadChildren: () => import('./prod-detail/prod-detail.module').then( m => m.ProdDetailPageModule),
+    resolve: {product: ProductResolverService}
   }
 ];
 

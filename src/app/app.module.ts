@@ -12,6 +12,9 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BackendInterceptor } from './services/backend.interceptor';
 
+import { IonicStorageModule } from '@ionic/storage';
+
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -19,7 +22,8 @@ import { BackendInterceptor } from './services/backend.interceptor';
             IonicModule.forRoot(),
             AppRoutingModule,
             HttpClientModule,
-            FormsModule],
+            FormsModule,
+            IonicStorageModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,

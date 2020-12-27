@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { CategoryModel } from '../models/categoryModel';
 import { ProductModel } from '../models/product-model';
 
 @Injectable({
@@ -25,8 +26,8 @@ export class ProductService {
     return this.httpClient.get<ProductModel[]>(`${this.url}/products?search=${keyword}`);
   }
 
-  getAllCategories() {
-    return this.httpClient.get(`${this.url}/products/categories?per_page=100&hide_empty=true&parent=0`).toPromise();
+  getAllCategories(): Observable<CategoryModel[]> {
+    return this.httpClient.get<CategoryModel[]>(`${this.url}/products/categories?per_page=100&hide_empty=true&parent=0`);
   }
 
 }

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sorting...</ion-title>
+    <ion-buttons>
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-radio-group (ionChange)="radioChanged($event)">
+      <ion-item>
+        <ion-label>Name Ascending</ion-label>
+        <ion-radio color="danger" value="title-asc"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Name Descending</ion-label>
+        <ion-radio color="danger" value="title-desc"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Price Ascending</ion-label>
+        <ion-radio color="danger" value="price-asc"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Price Descending</ion-label>
+        <ion-radio color="danger" value="price-desc"></ion-radio>
+      </ion-item>
+
+    </ion-radio-group>
+  </ion-list>
+</ion-content>

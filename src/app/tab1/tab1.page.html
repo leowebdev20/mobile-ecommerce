@@ -1,4 +1,7 @@
-  <ion-toolbar color="primary">
+<app-filter-menu (checkbox)="categoryFilter($event)" [categories]="categories"></app-filter-menu>
+<ion-router-outlet id="filter"></ion-router-outlet>
+
+<ion-toolbar color="primary">
     <ion-buttons slot="start">
       <!-- <ion-button>
         <ion-icon name="menu" slot="icon-only"></ion-icon>
@@ -22,11 +25,11 @@
 <ion-content [fullscreen]="true" style="position: relative;">
     <ion-toolbar style="position: fixed;">
       <ion-buttons slot="primary">
-        <ion-button color="dark" expand="block" fill="clear">
+        <ion-button color="dark" expand="block" fill="clear" (click)="openModal()">
           <ion-icon name="funnel-outline" slot="end"></ion-icon>
           Sort
         </ion-button>
-        <ion-button color="dark" expand="block" fill="clear">
+        <ion-button color="dark" expand="block" fill="clear" (click)="openFilter()">
           <ion-icon name="filter-outline" slot="end"></ion-icon>
           Filter
         </ion-button>
@@ -43,7 +46,7 @@
       <ion-row>
         <ion-col>
           <ion-list>
-            <ion-item *ngFor="let prod of displayedList" class="item-entry" detail routerLink="/tabs/tab1/prod-detail/{{prod.id}}">
+            <ion-item *ngFor="let prod of displayedList" (click)="loadingSpinner()" class="item-entry" detail routerLink="/tabs/tab1/prod-detail/{{prod.id}}">
               <ion-thumbnail>
                 <ion-img [src]="prod.images[0].src" alt="{{prod.name}}"></ion-img>
               </ion-thumbnail>
