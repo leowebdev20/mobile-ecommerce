@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, MenuController, ModalController, ToastController } from '@ionic/angular';
+import { map } from 'rxjs/operators';
 import { SortModalComponent } from '../components/sort-modal/sort-modal.component';
 import { CategoryModel } from '../models/categoryModel';
 import { ProductModel } from '../models/product-model';
+import { CartService } from '../services/cart.service';
 import { ProductService } from '../services/product.service';
 
 @Component({
@@ -31,12 +33,16 @@ export class Tab1Page implements OnInit  {
   filterCount = 0;
   filteredCategoryList: any[] = [];
   categories: CategoryModel[] = [];
+  count: number;
 
   constructor(private productService: ProductService,
               private loadingController: LoadingController,
               private menuController: MenuController,
               private toastController: ToastController,
-              private modalController: ModalController) {}
+              private modalController: ModalController,
+              private cartService: CartService) {
+                this.loadMoreData(null).then();
+              }
 
   async loadMoreData(e: any) {
     const toast = await this.toastController.create({
@@ -54,6 +60,7 @@ export class Tab1Page implements OnInit  {
 
     if (e == null) {
       this.currentPage = 1;
+      return;
     } else {
       this.currentPage++;
       this.productService.getAllProducts(this.currentPage).subscribe(async (prods: ProductModel[]) => {
@@ -91,6 +98,11 @@ export class Tab1Page implements OnInit  {
     });
 
     this.categories = await this.productService.getAllCategories().toPromise();
+
+    this.cartService.cartData.pipe(
+      map(data => data.count)
+    ).subscribe(count => this.count = count);
+
   }
 
   loadingSpinner() {
@@ -225,6 +237,16 @@ export class Tab1Page implements OnInit  {
       if (this.filterCount == 0) {
         this.displayedList = [...this.listArrayOfProducts];
       }
+    }
+  }
+
+  segmentChange(e: any) {
+    const value = e.target.value;
+    if (value == 'featured') {
+      this.loadMoreData(null).then();
+      this.displayedList = this.listArrayOfProducts.filter(p => p.featured == true)
+    } else {
+      this.displayedList = [...this.listArrayOfProducts];
     }
   }
 

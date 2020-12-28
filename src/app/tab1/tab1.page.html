@@ -19,7 +19,18 @@
         <ion-icon name="search" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-badge color="light" slot="end">0</ion-badge>
+    <ion-badge color="light" slot="end">{{count || 0}}</ion-badge>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-segment (ionChange)="segmentChange($event)">
+      <ion-segment-button value="all">
+        <ion-label>All</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="featured">
+        <ion-label>Featured</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 
 <ion-content [fullscreen]="true" style="position: relative;">
